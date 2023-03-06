@@ -1,0 +1,17 @@
+<div>
+    <div class="d-flex">
+        <div class="me-auto col fw-bold">Forecast for next 5 days</div>
+    </div>
+    <mat-accordion *ngFor="let item of dataMap | keyvalue: asIsOrder; let i = index">
+        <mat-expansion-panel class="bg-transparent rounded-0 text-dark" [expanded]="state === i" (opened)="setState(i)">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="text-dark">
+                    {{item.key | date:'mediumDate'}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row pb-3" *ngFor="let weather of item.value">
+                <app-weather-card [weatherip]="weather"></app-weather-card>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
